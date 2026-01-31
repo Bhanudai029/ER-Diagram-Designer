@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>E-R Diagram Designer</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <div class="app">
+    <header class="app-header">
+      <div>
+        <p class="eyebrow">E-R Diagram Designer</p>
+        <h1>Build clean entity-relationship diagrams fast</h1>
+        <p class="subhead">Drag elements into the canvas, connect them, and load templates to jump-start any topic.</p>
+      </div>
+      <div class="header-actions">
+        <button id="connect-toggle" class="btn ghost">Connect: Off</button>
+        <button id="clear-canvas" class="btn outline">Clear Canvas</button>
+      </div>
+    </header>
+
+    <div class="app-body">
+      <aside class="sidebar">
+        <section class="panel">
+          <div class="panel-title">
+            <h2>Elements</h2>
+            <span>Drag onto the canvas</span>
+          </div>
+          <div class="palette" id="palette">
+            <div class="palette-item" data-type="entity">
+              <span class="palette-icon icon-entity"></span>
+              <span>Entity</span>
+            </div>
+            <div class="palette-item" data-type="weak-entity">
+              <span class="palette-icon icon-weak-entity"></span>
+              <span>Weak Entity</span>
+            </div>
+            <div class="palette-item" data-type="relationship">
+              <span class="palette-icon icon-relationship"></span>
+              <span>Relationship</span>
+            </div>
+            <div class="palette-item" data-type="attribute">
+              <span class="palette-icon icon-attribute"></span>
+              <span>Attribute</span>
+            </div>
+            <div class="palette-item" data-type="key-attribute">
+              <span class="palette-icon icon-key-attribute"></span>
+              <span>Key Attribute</span>
+            </div>
+            <div class="palette-item" data-type="multivalued-attribute">
+              <span class="palette-icon icon-multivalued"></span>
+              <span>Multivalued</span>
+            </div>
+            <div class="palette-item" data-type="derived-attribute">
+              <span class="palette-icon icon-derived"></span>
+              <span>Derived</span>
+            </div>
+            <div class="palette-item" data-type="isa">
+              <span class="palette-icon icon-isa"></span>
+              <span>ISA</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-title">
+            <h2>Templates</h2>
+            <span>Instant starting points</span>
+          </div>
+          <div class="templates">
+            <button class="btn template-btn" data-template="library">Library System</button>
+            <button class="btn template-btn" data-template="ecommerce">E-Commerce Orders</button>
+            <button class="btn template-btn" data-template="university">University Enrollment</button>
+          </div>
+        </section>
+      </aside>
+
+      <main class="canvas-wrap">
+        <div id="canvas" class="canvas">
+          <svg id="connections" class="connections" aria-hidden="true"></svg>
+          <div class="canvas-hint">
+            <strong>Drop elements here.</strong>
+            <span>Click to select, drag to move. Use Connect mode to draw relationships.</span>
+          </div>
+        </div>
+      </main>
+
+      <aside class="sidebar right">
+        <section class="panel">
+          <div class="panel-title">
+            <h2>Properties</h2>
+            <span>Selected element</span>
+          </div>
+          <div class="prop-row">
+            <label for="prop-label">Label</label>
+            <input id="prop-label" type="text" placeholder="Select an element" />
+          </div>
+          <div class="prop-row">
+            <label>Type</label>
+            <div id="prop-type" class="prop-readonly">None</div>
+          </div>
+          <div class="prop-row">
+            <button id="delete-selected" class="btn danger">Delete Selected</button>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-title">
+            <h2>Tips</h2>
+            <span>Quick reminders</span>
+          </div>
+          <ul class="tips">
+            <li>Toggle Connect to link two elements.</li>
+            <li>Click empty space to clear selection.</li>
+            <li>Templates wipe the canvas before loading.</li>
+          </ul>
+        </section>
+      </aside>
+    </div>
+  </div>
+
+  <div id="context-menu" class="context-menu">
+    <div class="menu-item" id="menu-edit">Edit Name</div>
+    <div class="menu-item" id="menu-duplicate">Duplicate</div>
+    <div class="divider"></div>
+    <div class="menu-item danger" id="menu-delete">Delete</div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
